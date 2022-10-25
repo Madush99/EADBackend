@@ -19,11 +19,13 @@ if(process.env.NODE_ENV === 'development') {
 
 //Import routes
 import fuelRoutes from './routes/fuelRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 app.use(express.json())
 
 //Routes
 app.use('/api/fuel', fuelRoutes);
+app.use('/api/user', userRoutes);
 
 
 const PORT = process.env.PORT || 5000

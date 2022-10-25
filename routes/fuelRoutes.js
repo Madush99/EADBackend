@@ -4,6 +4,7 @@ const router = express.Router()
 
 import { createFuel, deleteFuel, getFuel, getFuelByShed, searchShed, updateFuelStatus } from "../controllers/fuelController.js";
 
+
 router.post('/createFuel', createFuel);
 router.get('/allFuel', getFuel);
 router.get('/shed/:number', getFuelByShed);
