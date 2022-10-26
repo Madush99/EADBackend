@@ -92,15 +92,7 @@ const userCount = asyncHandler(async(req,res) => {
     const user = await User.find({shedPhoneNo:findphone})
 
     if(user){
-       const type = user.filter(f => f.vehicleType == "car");
-       const type1 = user.filter(f => f.vehicleType== "van");
-       const type2 = user.filter(f => f.vehicleType== "bus");
-       let count = Object.keys(type).length
-       let count1 = Object.keys(type1).length
-       let count2 = Object.keys(type2).length
-       let count3 = Object.keys(user).length
-
-       res.json({car: count, van: count1, bus: count2, total: count3})
+       res.json(user)
     //    if(type){
     //     console.log(type)
     //     let count = Object.keys(type).length
