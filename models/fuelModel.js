@@ -5,6 +5,8 @@
  */
 import mongoose from "mongoose";
 
+// creating a fuel model by adding fields 
+
 const fuelSchema = mongoose.Schema({
     id:{
         type:String,

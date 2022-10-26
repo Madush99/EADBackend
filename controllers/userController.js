@@ -1,6 +1,8 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
 
+//create new user details
+
 const createUser = asyncHandler(async (req, res) => {
     const {
         shedPhoneNo,
@@ -32,24 +34,14 @@ const createUser = asyncHandler(async (req, res) => {
     }
 })
 
+// get all user orders
 
 const getUser = asyncHandler(async (req, res) => {
     const user = await User.find({})
     res.json(user)
 })
 
-// const getuserByShed = asyncHandler(async(req,res) => {
-
-//     const findPhone = req.params.number;
-//     const user = await user.find({shedPhoneNo:findPhone})
-
-//     if(user){
-//         res.json(user)
-//     }else{
-//         res.status(404)
-//         throw new Error("user not found")
-//     }
-// })
+//update user order details by passing ID
 
 const updateUserStatus = asyncHandler(async (req, res) => {
     const { shedPhoneNo,
@@ -73,6 +65,8 @@ const updateUserStatus = asyncHandler(async (req, res) => {
     }
 })
 
+//delete user oroder details by passing specific user ID
+
 const deleteUser = asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id)
 
@@ -85,6 +79,7 @@ const deleteUser = asyncHandler(async (req, res) => {
     }
 })
 
+//calculate the queue count
 
 const userCount = asyncHandler(async(req,res) => {
 
@@ -93,14 +88,7 @@ const userCount = asyncHandler(async(req,res) => {
 
     if(user){
        res.json(user)
-    //    if(type){
-    //     console.log(type)
-    //     let count = Object.keys(type).length
-    //     res.json({number:count})
-    //    }else if(type1){
-    //     let count1 = Object.keys(type1).length
-    //     res.json({number:count1})
-    //    }
+
       
     }else{
         res.status(404)
@@ -108,33 +96,6 @@ const userCount = asyncHandler(async(req,res) => {
     }
 })
 
-
-// const searchShed = asyncHandler(async(req,res) => {
-
-//     const findlocation = req.params.location;
-//     const user = await user.find({shedLocation:findlocation})
-
-//     if(user){
-//        const type = user.filter(f => f.userType == "petrol");
-//        const type1 = user.filter(f => f.shedPhoneNo == "0717965296");
-//        let count = Object.keys(type).length
-//        let count1 = Object.keys(type1).length
-
-//        res.json({Car: count1, van: count})
-//     //    if(type){
-//     //     console.log(type)
-//     //     let count = Object.keys(type).length
-//     //     res.json({number:count})
-//     //    }else if(type1){
-//     //     let count1 = Object.keys(type1).length
-//     //     res.json({number:count1})
-//     //    }
-
-//     }else{
-//         res.status(404)
-//         throw new Error("user not found")
-//     }
-// })
 
 
 export { createUser, getUser, updateUserStatus, deleteUser, userCount }

@@ -1,6 +1,9 @@
 import asyncHandler from 'express-async-handler';
 import Fuel from '../models/fuelModel.js';
 
+
+//create a new fuel shed
+
 const createFuel = asyncHandler(async (req,res) => {
     const {
     shedPhoneNo,
@@ -35,10 +38,16 @@ const createFuel = asyncHandler(async (req,res) => {
     }
 })
 
+
+// get all fuel data
+
 const getFuel = asyncHandler(async(req,res) => {
     const fuel = await Fuel.find({})
     res.json(fuel)
 })
+
+
+// get specific fuel data by passing ID
 
 const getFuelByShed = asyncHandler(async(req,res) => {
 
@@ -52,6 +61,8 @@ const getFuelByShed = asyncHandler(async(req,res) => {
         throw new Error("Fuel not found")
     }
 })
+
+//update fuel data by passing ID
 
 const updateFuelStatus = asyncHandler(async(req,res) => {
     const {shedPhoneNo, shedName, fuelStatus, fuelType, shedLocation } = req.body
@@ -73,6 +84,9 @@ const updateFuelStatus = asyncHandler(async(req,res) => {
   }
 })
 
+
+//delete fuel data by passing ID
+
 const deleteFuel = asyncHandler(async (req, res) => {
     const fuel = await Fuel.findById(req.params.id)
 
@@ -84,6 +98,8 @@ const deleteFuel = asyncHandler(async (req, res) => {
         throw new Error('Fuel deleted!')
     }
 })
+
+// search fuel data by inserting location
 
 const searchShed = asyncHandler(async(req,res) => {
 
